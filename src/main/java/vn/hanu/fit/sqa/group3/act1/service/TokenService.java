@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import vn.hanu.fit.sqa.group3.act1.model.Token;
 import vn.hanu.fit.sqa.group3.act1.repository.TokenRepository;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -19,7 +18,7 @@ public class TokenService {
     }
 
     public int confirm(String str) {
-        return tokenRepository.updateConfirmedAt(str, LocalDateTime.now());
+        return tokenRepository.confirm(str);
     }
 
     public void save(Token token) {

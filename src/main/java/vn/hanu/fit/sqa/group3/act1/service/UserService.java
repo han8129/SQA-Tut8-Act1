@@ -17,16 +17,6 @@ import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
-    public User save(UserDto userDto) {
-        User user = new User(
-            userDto.getUsername()
-            , userDto.getPassword()
-            , userDto.getEmail()
-        );
-
-        return userRepository.save(user);
-    };
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByUsername(username);
@@ -61,8 +51,6 @@ public class UserService implements UserDetailsService {
         );
 
         tokenService.save( token );
-
-        emailService.send(user.getUsername(), user.getEmail());
 
         return str;
     }
