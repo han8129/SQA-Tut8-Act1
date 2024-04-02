@@ -11,6 +11,7 @@ public class Token {
         this.str = str;
         this.createdAt = LocalDateTime.now();
         this.expiresAt = LocalDateTime.now().plusMinutes(15);
+        this.confirmed = false;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -21,8 +22,8 @@ public class Token {
         return expiresAt;
     }
 
-    public LocalDateTime getConfirmedAt() {
-        return confirmedAt;
+    public Boolean getConfirmed() {
+        return confirmed;
     }
 
     public User getOwner() {
@@ -37,8 +38,8 @@ public class Token {
         return id;
     }
 
-    public void setConfirmedAt(LocalDateTime confirmedAt) {
-        this.confirmedAt = confirmedAt;
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
     }
 
     @Id
@@ -50,12 +51,12 @@ public class Token {
     @ManyToOne private final User owner;
     private final LocalDateTime createdAt;
     private final LocalDateTime expiresAt;
-    private LocalDateTime confirmedAt;
+    private boolean confirmed;
 
-    public Token(User owner, String str, LocalDateTime createdAt, LocalDateTime expiresAt, LocalDateTime confirmedAt) {
+    public Token(User owner, String str, LocalDateTime createdAt, LocalDateTime expiresAt, Boolean confirmed) {
         this.owner = owner;
         this.str = str;
-        this.confirmedAt = confirmedAt;
+        this.confirmed = confirmed;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;
     }

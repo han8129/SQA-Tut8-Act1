@@ -26,9 +26,9 @@ public class MySecurityConf {
     @Bean SecurityFilterChain filterChain(HttpSecurity http, DaoAuthenticationProvider authenticationProvider) throws Exception{
         return http
             .authorizeHttpRequests(req -> req
-                .requestMatchers("/registration**")
+                .requestMatchers("/registration", "register")
                 .permitAll()
-                .anyRequest() .authenticated()
+                .anyRequest() .anonymous()
             )
             .authenticationProvider(authenticationProvider)
             .build();

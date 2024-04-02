@@ -1,9 +1,17 @@
 package vn.hanu.fit.sqa.group3.act1.model;
 
 public class UserDto {
-    public UserDto(String username, String password, String email) {
+    public UserDto() {};
+
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
