@@ -46,13 +46,38 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private final String str;
+    private String str;
 
-    @ManyToOne private final User owner;
-    private final LocalDateTime createdAt;
-    private final LocalDateTime expiresAt;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setExpiresAt(LocalDateTime expiresAt) {
+        this.expiresAt = expiresAt;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    @ManyToOne private User owner;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiresAt;
     private boolean confirmed;
 
+    public Token() {}
     public Token(User owner, String str, LocalDateTime createdAt, LocalDateTime expiresAt, Boolean confirmed) {
         this.owner = owner;
         this.str = str;
