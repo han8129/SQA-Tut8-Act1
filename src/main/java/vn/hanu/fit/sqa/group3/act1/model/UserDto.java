@@ -1,7 +1,7 @@
 package vn.hanu.fit.sqa.group3.act1.model;
 
 public class UserDto {
-    public UserDto() {};
+    public UserDto() {}
 
     public void setUsername(String username) {
         this.username = username;

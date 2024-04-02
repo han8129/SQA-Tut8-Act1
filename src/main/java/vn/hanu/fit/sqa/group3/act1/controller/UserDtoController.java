@@ -37,7 +37,7 @@ public class UserDtoController {
     }
 
     @Transactional
-    @PostMapping("/confirm") public String confirm(
+    @GetMapping("/confirm") public String confirm(
         @RequestParam(value = "token", required = true) String str
     ) {
         Optional<Token> temp = tokenService.findByStr(str);
