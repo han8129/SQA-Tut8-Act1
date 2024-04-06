@@ -23,6 +23,10 @@
         <label>email</label>
         <input type="email" th:field="*{email}"/>
     </div>
+    <div>
+        <input type="checkbox" name="agree_to_terms" id="agree_to_terms" required>
+        <label for="agree_to_terms">Tôi đồng ý với <a th:href="@{/terms}">User Agreement</a></label>
+    </div>
     <button type="submit">Submit</button>
 </form>
 

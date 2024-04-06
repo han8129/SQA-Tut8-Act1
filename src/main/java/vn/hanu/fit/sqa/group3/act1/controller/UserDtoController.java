@@ -21,13 +21,20 @@ import java.util.Optional;
 public class UserDtoController {
     @GetMapping("") public String registration( Model model ) {
         model.addAttribute("user", new UserDto());
+        model.addAttribute("agreeToTerms", false);
         return "index";
     }
 
     @PostMapping("/process")
     public String process(
-        @ModelAttribute("user") UserDto userDto
-    ) {
+            @ModelAttribute("user") UserDto userDto,
+            @RequestParam(required = false) boolean agreeToTerms, Model model) {
+
+        if (!agreeToTerms) {
+            // Add error message to the model
+            model.addAttribute("error", "Please agree to the User Agreement.");
+            return "index"; // Redirect back to registration form with error
+        }
 
         User user = new User(userDto);
         String token = userService.signUpUser(user);
@@ -59,6 +66,8 @@ public class UserDtoController {
 
         return "redirect:/login";
     }
+
+
 
 
     @Autowired private UserService userService;
