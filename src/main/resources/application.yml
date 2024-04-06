@@ -3,9 +3,9 @@ spring:
     name: act1
 
   datasource:
-    url: "jdbc:mysql://localhost:3306/DummyDB"
-    username: "hoang"
-    password: "password"
+    url: "jdbc:mysql://localhost:3306/userInf"
+    username: "root"
+    password: "hungkiet123"
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
