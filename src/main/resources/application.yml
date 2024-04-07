@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: act1
+
+  datasource:
+    url: "jdbc:mysql://localhost:3306/DummyDB"
+    username: "hoang"
+    password: "password"
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    database-ddl: true
+    hibernate:
+      ddl-auto: update
+
+    thymeleaf:
+      cache: false
+
+    security:
+      user:
+        name: "admin"
+        password: "password"
+
+  mail:
+    host: localhost
+    port: 1025
+    username: hello
+    password: hello
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000

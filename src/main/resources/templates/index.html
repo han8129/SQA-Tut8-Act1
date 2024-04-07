@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+    <style>
+        #sub1{
+          width: 70px;
+            margin-left: 60px;
+        }
+
+        #sub1:hover{
+            background-color: blanchedalmond;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body>
+<h1 style="margin-left: 620px;">Create new User</h1>
+<div class="container d-flex flex-column">
+    <div class="row vh-100">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+
+                <div class="text-center mt-4">
+                    <h1 class="h2">Get started</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-body" style="display:flex; justify-content: center">
+                        <div class="m-sm-4">
+                            <form th:action="'/registration/process'" th:object="${user}" method="POST" enctype="utf8" id="formres">
+                                <div>
+                                    <label>Username: </label></br>
+                                    <input th:field="*{username}" name="username"/>
+                                </div>
+                                <div>
+                                    <label>Password: </label></br>
+                                    <input type="password" th:field="*{password}" name="password"/>
+                                </div>
+                                <div>
+                                    <label>Confirm Password: </label></br>
+                                    <input type="password" name="cpassword"/>
+                                </div>
+                                <div>
+                                    <label>email</label></br>
+                                    <input type="email" th:field="*{email}" name="email"/>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="checkbox" class="tOS" name="tOS" id="tOSID"/>Agree to terms and conditions
+                                </div>
+                                <button type="submit" style="margin-left: 60px;" id="sub1">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+    const element = document.getElementById("formres");
+    element.addEventListener('submit', event => {
+        const tOSval = document.getElementById("tOSID").checked ;
+        if (tOSval == false) {
+            event.preventDefault();
+            alert("You have to Agree to the terms and conditions");
+            }
+        else {
+            return true;
+        }
+    })
+</script>
+</html>
