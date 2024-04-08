@@ -32,7 +32,7 @@ public class UserDtoController {
 
         User user = new User(userDto);
         UserDetails isE = userService.loadUserByUsername(user.getUsername());
-        
+
         if (isE != null) {
             throw new IllegalStateException("username is already taken");
         }
