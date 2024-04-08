@@ -1,6 +1,7 @@
 package vn.hanu.fit.sqa.group3.act1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -30,6 +31,12 @@ public class UserDtoController {
     ) {
 
         User user = new User(userDto);
+        UserDetails isE = userService.loadUserByUsername(user.getUsername());
+        
+        if (isE != null) {
+            throw new IllegalStateException("username is already taken");
+        }
+
         String token = userService.signUpUser(user);
         emailService.sendVerification( userDto.getEmail(), token);
 
